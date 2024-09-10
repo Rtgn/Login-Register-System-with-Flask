@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Duzenle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+    <header class="layout">
+        <div class = "profile-container">
+            <div class = "p-logo">
+                <h1><a href="#">SiteAdı</a></h1>
+            </div>
+            <div class="p-logout">
+                <a href="{{ url_for('logout') }}">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+            
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Design Your Profile!</h2>
+            <form action="{{ url_for('update_profile') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="profile_image">Profile Picture:</label>
+                    <input type="file" id="profile_image" name="profile_image">
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="{{ account['username'] }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hakkinda">About:</label>
+                    <input id="hakkinda" name="hakkinda" rows="4" required>{{ account['hakkinda'] }}
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    
+</body>
+</html>

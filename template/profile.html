@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<header class="layout">
+			<div class = "profile-container">
+				<div class = "p-logo">
+					<h1><a href="#">SiteAdı</a></h1>
+				</div>
+                <div class="p-logout">
+                    <a href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+                
+			</div>
+		</header>
+
+        
+        <div class="profile-infos">
+
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='profil_pictures/' + account['profile_image']) }}" alt="">
+            </div>
+            <div class="profile-username">
+                <span>{{ account['username'] }}</span>
+            </div>
+
+            <div class="profile-hakkinda">
+                <p class="hakkinda">
+                    {{ account['hakkinda'] }}
+                </p>
+            </div>
+
+            <div class="fal-send-like">
+
+                <div class="gonderi-sayisi">
+                    <span class="number" id="g-number">{{ total_content }}</span>
+                    <span class="gonderi">Gönderi</span>
+                </div>
+                <div class="fallowers">
+                    <span class="number" id="f-number">{{ follower_count }}</span>
+                    <span class="takipci">Takipçi</span>
+                </div>
+                <div class="liked-number">
+                    <span class="number" id="l-number">{{ total_likes }}</span>
+                    <span class="begeni">Beğeni</span>
+
+                </div>
+            </div>
+
+            <div class="profile-duzenle">
+                <a href="{{ url_for('profil_duzenle') }}">Profil Düzenle</a>
+            </div>
+
+            <div class="profil-secenekler">
+				<a href="{{ url_for('profile') }}" class="active">Profile</a>
+			</div>
+
+        </div>
+
+        <div class="profilecontents content">
+            <h2>Profil Details</h2>
+            <div>
+                <p>Your account details are below:</p>
+                <table>
+                    <tr>
+                        <td>Username:</td>
+                        <td>{{ account['username'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>******</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ account['email'] }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+	</body>
+</html>
+
